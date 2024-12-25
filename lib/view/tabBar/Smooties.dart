@@ -151,8 +151,8 @@ class Smooties extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return const FoodLayout(
-      foods: [],
+    return  FoodLayout(
+      foods: recipe,
     );
   }
 }

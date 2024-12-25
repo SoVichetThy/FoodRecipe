@@ -25,8 +25,12 @@ class FoodLayout extends StatelessWidget {
           padding:
               const EdgeInsets.only(left: 25, top: 20, right: 25, bottom: 25),
           children: [
-            FoodInTabBar(image: foods[0].img, text: foods[0].name),
-            
+            ...List.generate(
+              foods.length,
+              (index) => FoodInTabBar(
+                recipeModel: foods[index],
+              ),
+            )
           ],
         ),
       ),
@@ -35,14 +39,8 @@ class FoodLayout extends StatelessWidget {
 }
 
 class FoodInTabBar extends StatelessWidget {
-  final String image;
-  final String text;
-
-  const FoodInTabBar({
-    super.key,
-    required this.image,
-    required this.text,
-  });
+  final RecipeModel recipeModel;
+  const FoodInTabBar({super.key, required this.recipeModel});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +54,7 @@ class FoodInTabBar extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Image.asset(image),
+            Image.asset(recipeModel.img),
             Positioned(
               bottom: 0,
               child: Container(
@@ -78,7 +76,7 @@ class FoodInTabBar extends StatelessWidget {
               bottom: 10,
               left: 8,
               child: Text(
-                text,
+                recipeModel.name,
                 style: GoogleFonts.poppins(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -93,7 +91,9 @@ class FoodInTabBar extends StatelessWidget {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SingleFoodLayout(),
+                      builder: (context) => SingleFoodLayout(
+                        recipe: recipeModel,
+                      ),
                     ),
                   );
                 },
