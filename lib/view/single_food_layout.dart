@@ -1,11 +1,16 @@
 import 'package:final_project/Data/dummy.dart';
 import 'package:final_project/app_screen.dart';
+import 'package:final_project/model/recipe_model.dart';
 import 'package:final_project/model/timer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SingleFoodLayout extends StatefulWidget {
-  const SingleFoodLayout({super.key});
+  final RecipeModel recipe;
+  const SingleFoodLayout({
+    super.key,
+    required this.recipe,
+  });
 
   @override
   State<SingleFoodLayout> createState() => _SingleFoodLayoutState();
@@ -53,8 +58,7 @@ class _SingleFoodLayoutState extends State<SingleFoodLayout> {
                   bottomLeft: Radius.circular(25),
                   bottomRight: Radius.circular(25),
                 ),
-                child: Image.asset(
-                    'image/tabar/snack/Gemini_Generated_Image_wpsbpewpsbpewpsb.jpeg'),
+                child: Image.asset(widget.recipe.img),
               ),
             ),
             Column(
@@ -78,28 +82,6 @@ class _SingleFoodLayoutState extends State<SingleFoodLayout> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Center(
-                                child: Text(
-                                  'KHMER NumPangPaTe',
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              const Divider(
-                                thickness: 3,
-                              ),
-                              Text(
-                                'Num Pang Pa Té is a crispy baguette filled with pork pâté, pickles, and fresh herbs',
-                                style: GoogleFonts.poppins(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
                               Align(
                                 alignment: Alignment.bottomLeft,
                                 child: Text(
@@ -112,20 +94,30 @@ class _SingleFoodLayoutState extends State<SingleFoodLayout> {
                                 ),
                               ),
                               ...List.generate(
-                                dummyRecipe[0].ingredients.length,
+                                widget.recipe.ingredients.length,
                                 (index) {
                                   return Column(
                                     children: [
                                       const Divider(),
                                       BulletTextInBoldTitle(
-                                          bulletText:
-                                              '\u2022 ${dummyRecipe[0].ingredients[index].name}',
-                                          unit: '10g'),
+                                        bulletText:
+                                            '\u2022 ${widget.recipe.ingredients[index].name}',
+                                        unit: widget.recipe.ingredients[index]
+                                            .unit.name,
+                                        quantity: widget
+                                            .recipe.ingredients[index].quan,
+                                      ),
                                     ],
                                   );
                                 },
                               ),
+                              const SizedBox(
+                                height: 30,
+                              ),
                               Container(
+                                margin: const EdgeInsets.only(
+                                  top: 10,
+                                ),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: const Color(0xffEA580C),
@@ -200,16 +192,16 @@ class _SingleFoodLayoutState extends State<SingleFoodLayout> {
 class BulletTextInBoldTitle extends StatelessWidget {
   final String bulletText;
   final String unit;
-  const BulletTextInBoldTitle({
-    super.key,
-    required this.bulletText,
-    required this.unit,
-  });
+  final int quantity;
+  const BulletTextInBoldTitle(
+      {super.key,
+      required this.bulletText,
+      required this.unit,
+      required this.quantity});
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           bulletText,
@@ -218,6 +210,12 @@ class BulletTextInBoldTitle extends StatelessWidget {
             fontWeight: FontWeight.w400,
             color: Colors.black,
           ),
+        ),
+        const Spacer(),
+        Text(
+          quantity.toString(),
+          style: GoogleFonts.poppins(
+              fontSize: 12, fontWeight: FontWeight.w400, color: Colors.black),
         ),
         Text(
           unit,

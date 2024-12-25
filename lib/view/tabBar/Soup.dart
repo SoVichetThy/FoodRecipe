@@ -9,7 +9,7 @@ class Soup extends StatelessWidget {
 
   List<RecipeModel> recipe = [
     RecipeModel(
-      img: 'image/tabar/snack/unnamed.png',
+      img: 'image/tabar/soup/Gemini_Generated_Image_6hf8ry6hf8ry6hf8.jpeg',
       id: uuid.v4(),
       name: 'Pumpkin Soup',
       type: RecipeType.curries,
@@ -35,7 +35,7 @@ class Soup extends StatelessWidget {
     RecipeModel(
       img: 'image/tabar/soup/Gemini_Generated_Image_ec823gec823gec82.jpeg',
       id: uuid.v4(),
-      name: 'Pumpkin Soup',
+      name: 'Chicken Noodle Soup',
       type: RecipeType.curries,
       feedback: '',
       timer: DateTime.now(),
@@ -55,34 +55,42 @@ class Soup extends StatelessWidget {
     ),
     RecipeModel(
       //duplicate
-      img: 'image/tabar/snack/unnamed.png',
+      img: 'image/tabar/soup/Gemini_Generated_Image_oeu1j0oeu1j0oeu1.jpeg',
       id: uuid.v4(),
-      name: 'Pumpkin Soup',
+      name: 'Tong Yum Soup',
       type: RecipeType.curries,
       feedback: '',
       timer: DateTime.now(),
       ingredients: [
-        Ingredient(name: 'Pumpkin', id: uuid.v4(), quan: 500, unit: Unit.gram),
-        Ingredient(name: 'Onion', id: uuid.v4(), quan: 100, unit: Unit.gram),
-        Ingredient(name: 'Garlic', id: uuid.v4(), quan: 2, unit: Unit.clove),
+        Ingredient(name: 'Shrimp', id: uuid.v4(), quan: 300, unit: Unit.gram),
         Ingredient(
-            name: 'Vegetable stock',
+            name: 'Tom Yum paste',
             id: uuid.v4(),
-            quan: 500,
+            quan: 2,
+            unit: Unit.tablespoon),
+        Ingredient(
+            name: 'Lemongrass', id: uuid.v4(), quan: 1, unit: Unit.stalk),
+        Ingredient(name: 'Galangal', id: uuid.v4(), quan: 20, unit: Unit.gram),
+        Ingredient(
+            name: 'Lime leaves', id: uuid.v4(), quan: 5, unit: Unit.piece),
+        Ingredient(
+            name: 'Mushrooms', id: uuid.v4(), quan: 100, unit: Unit.gram),
+        Ingredient(
+            name: 'Fish sauce', id: uuid.v4(), quan: 2, unit: Unit.tablespoon),
+        Ingredient(
+            name: 'Lime juice', id: uuid.v4(), quan: 2, unit: Unit.tablespoon),
+        Ingredient(
+            name: 'Coconut milk',
+            id: uuid.v4(),
+            quan: 200,
             unit: Unit.milliliter),
-        Ingredient(
-            name: 'Cream', id: uuid.v4(), quan: 100, unit: Unit.milliliter),
-        Ingredient(
-            name: 'Olive oil', id: uuid.v4(), quan: 1, unit: Unit.tablespoon),
-        Ingredient(name: 'Salt', id: uuid.v4(), quan: 1, unit: Unit.teaspoon),
-        Ingredient(name: 'Pepper', id: uuid.v4(), quan: 1, unit: Unit.teaspoon),
       ],
     ),
     RecipeModel(
       //duplicate
-      img: 'image/tabar/snack/unnamed.png',
+      img: 'image/tabar/soup/Gemini_Generated_Image_xvmi57xvmi57xvmi.jpeg',
       id: uuid.v4(),
-      name: 'Pumpkin Soup',
+      name: 'Miso Soup',
       type: RecipeType.curries,
       feedback: '',
       timer: DateTime.now(),
@@ -106,8 +114,8 @@ class Soup extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return const FoodLayout(
-      foods: [],
+    return FoodLayout(
+      foods: recipe,
     );
   }
 }

@@ -17,16 +17,6 @@ class RecipeModel {
     required this.timer,
     required this.ingredients,
   });
-  // Ingredient addIngredient(Ingredient ingredient) {
-  //   ingredients.add(ingredient);
-  //   print(ingredient.name);
-  //   return ingredient;
-  // }
-
-  // void displayIngredients() {
-  //   print('Ingredients for $name:');
-  //   print('- ${ingredients.toString()}');
-  // }
 }
 
 enum RecipeType {

@@ -23,4 +23,5 @@ enum Unit {
   teaspoon,
   piece,
   liter,
+  stalk,
 }

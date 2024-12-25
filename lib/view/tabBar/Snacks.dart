@@ -52,10 +52,11 @@ class Snacks extends StatelessWidget {
             unit: Unit.milliliter),
       ],
     ),
-    RecipeModel( //duplicate
-      img: 'image/tabar/snack/unnamed (1).png',
+    RecipeModel(
+      //duplicate
+      img: 'image/tabar/snack/unnamed (3).png',
       id: uuid.v4(),
-      name: 'Fresh Spring Rolls',
+      name: 'Num Jek Jean',
       type: RecipeType.curries,
       feedback: '',
       timer: DateTime.now(),
@@ -76,10 +77,11 @@ class Snacks extends StatelessWidget {
             unit: Unit.milliliter),
       ],
     ),
-    RecipeModel( //Duplicate
-      img: 'image/tabar/snack/unnamed (1).png',
+    RecipeModel(
+      //Duplicate
+      img: 'image/tabar/snack/unnamed (4).png',
       id: uuid.v4(),
-      name: 'Fresh Spring Rolls',
+      name: 'Num Plae Ai',
       type: RecipeType.curries,
       feedback: '',
       timer: DateTime.now(),
@@ -103,8 +105,8 @@ class Snacks extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return const FoodLayout(
-      foods: [],
+    return FoodLayout(
+      foods: recipe,
     );
   }
 }

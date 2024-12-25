@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 class Stirfried extends StatelessWidget {
   Stirfried({super.key});
+  
   List<RecipeModel> recipe = [
     RecipeModel(
       img: 'image/tabar/stirfried/Gemini_Generated_Image_3dl8i73dl8i73dl8.jpeg',
@@ -126,8 +127,8 @@ class Stirfried extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return const FoodLayout(
-      foods: [],
+    return  FoodLayout(
+      foods: recipe,
     );
   }
 }
